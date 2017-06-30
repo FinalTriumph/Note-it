@@ -1,14 +1,24 @@
 body {
   font-family: 'Sintony', sans-serif;
   text-align: center;
+  margin: 0px;
   background-image: url("/images/bg1.jpg");
   background-size: 100% 100%;
   background-attachment: fixed;
 }
-button, input, textarea {
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+button, 
+input, 
+textarea {
   font-family: sans-serif;
 }
-button:active, button:focus, textarea:focus {
+button:active, 
+button:focus, 
+textarea:focus,
+p1:focus,
+a:focus {
   outline: none;
 }
 .home {
@@ -31,7 +41,10 @@ button:active, button:focus, textarea:focus {
   margin-bottom: 0px;
   box-shadow: 0px 1px 2px #444;
 }
-.home button, input[type="button"], #add_note {
+.home button, 
+input[type="button"], 
+#add_note,
+#confirmDeleteNote button {
   font-size: 0.9em;
   height: 2.6em;
   margin: 0.7em 0px 0px 0px;
@@ -43,7 +56,15 @@ button:active, button:focus, textarea:focus {
   color: #fff;
   box-shadow: 0px 1px 1px #bbb;
 }
-.home button:hover, input[type="button"]:hover, #add_note:hover, #nnXbtn:hover {
+.home button:hover, 
+input[type="button"]:hover, 
+#add_note:hover, 
+#nnXbtn:hover, 
+#profile button:hover,
+#changePassForm input[type='button']:hover,
+#psOKbtn:hover,
+#adOKbtn:hover,
+#confirmDeleteNote button:hover {
   background-color: #185895;
   background-color: rgba(0, 71, 138, 0.9);
 }
@@ -60,11 +81,13 @@ button:active, button:focus, textarea:focus {
 form {
   margin: 1em 0em;
 }
-form p1, form p2 {
+form p1, 
+form p2 {
   color: #111;
   font-size: 0.9em;
   float: left;
   margin-left: 9%;
+  margin-right: 9%;
 }
 form p2 {
   color: #A32003;
@@ -107,8 +130,7 @@ input[type="button"] {
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
-  height: 3em;
-  border-radius: 2px;
+  height: 3.2em;
   box-shadow: 0px 1px 2px #444;
 }
 #header_logo {
@@ -125,7 +147,6 @@ input[type="button"] {
   height: 100%;
   cursor: pointer;
   border: 0px;
-  border-bottom: 1px solid #fff;
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0);
   font-family: 'Sintony', sans-serif;
@@ -134,19 +155,39 @@ input[type="button"] {
 }
 #header button:hover {
   color: #00478a;
+  border-top: 1px solid #00478a;
   border-bottom: 1px solid #00478a;
 }
-#nnplussign {
+#addFirstNote {
+  cursor: pointer;
   background-color: #fff;
-  background-color: rgba(255, 255, 255, 0);
-  color: #000;
-  border-radius: 50%;
-  padding: 0.1em 0.5em;
-  font-size: 1.2em;
-  margin-right: 0.3em;
-  box-shadow: 0px 1px 1px #999;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 30%;
+  margin: 0.5em auto;
+  border-radius: 2px;
+  padding: 2em 2em;
+  box-shadow: 0px 1px 2px #444;
+  display: none;
 }
-#popup {
+#addFirstNote:hover {
+  background-color: #fff;
+}
+#plusSign {
+  font-family: sans-serif;
+  font-size: 1.5em;
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  margin: auto;
+  box-shadow: 0px 1px 2px #999;
+  transition: all 0.2s ease;
+}
+#popup,
+#popup2,
+#popup3 {
   display: none;
   width: 100%;
   height: 100%;
@@ -156,7 +197,9 @@ input[type="button"] {
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.9);
 }
-#new_note {
+#new_note, 
+#confirmDeleteNote,
+#aboutText {
   background-color: #fff;
   border: 2px solid #fff;
   border-radius: 3px;
@@ -164,6 +207,34 @@ input[type="button"] {
   width: 95%;
   max-width: 450px;
   box-shadow: 0px 1px 2px #777;
+}
+#aboutText {
+  padding-bottom: 1.5em;
+  padding-left: 2em;
+  max-width: 600px;
+  text-align: left;
+}
+#aboutText p1, #aboutText p2 {
+  font-size: 0.9em;
+  margin-right: 2em;
+}
+#aboutText p2 {
+  margin-left: 0.5em;
+}
+#aboutText p3 {
+  font-size: 0.9em;
+  margin-left: 30%;
+}
+#aboutText img {
+  height: 2em;
+  margin-top: 0.8em;
+  margin-bottom: -0.8em;
+}
+#aboutText a {
+  color: #000;
+}
+#aboutText a:hover {
+  color: #00478a;
 }
 #popup p1 {
   color: #111;
@@ -178,16 +249,18 @@ textarea {
   font-size: 1em;
   resize: none;
   margin: 0.5em auto;
-  padding: 0.3em;
+  padding: 0.5em;
   border: 0;
   border-radius: 1px;
-  box-shadow: 0px 1px 2px #222;
+  box-shadow: 0px 1px 2px #444;
 }
 #add_note {
-  width: 70%;
-  margin: 1em auto 2em auto;
+  width: 50%;
+  height: 2.2em;
+  margin: 1em auto 2.5em auto;
 }
-#nnXbtn {
+#nnXbtn,
+#closeAbout{
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -207,6 +280,9 @@ textarea {
 #nnXbtn:hover {
   background-color: #A32003;
 }
+#closeAbout:hover {
+  background-color: #185895;;
+}
 #charNum {
   font-family: sans-serif;
   float: right;
@@ -215,9 +291,6 @@ textarea {
   color: #777;
 }
 #notes {
-  //background-color: #fff;
-  //background-color: rgba(255, 255, 255, 0.5);
-  //margin-top: 1em;
   padding: 0.5em;
 }
 .note {
@@ -227,8 +300,7 @@ textarea {
   margin: 0.5em 5%;
   padding: 1.5em 2em;
   border-radius: 1px;
-  overflow-wrap: break-word;;
-  //border: 1px solid #bbb;
+  overflow-wrap: break-word;
   display: none;
   box-shadow: 0px 1px 2px #444;
 }
@@ -242,8 +314,189 @@ textarea {
   color: #bbb;
   padding: 0px;
   font-size: 1.5em;
-  //font-weight: bold;
 }
 .rmvnote:hover {
   color: #A32003;
+}
+#confirmDeleteNote {
+  padding: 2em;
+  overflow-wrap: break-word;
+  
+}
+#confirmDeleteNote button {
+  height: 2.2em;
+  font-size: 0.8em;
+  width: 30%;
+  margin: 2em 1em 0.5em 1em;
+}
+#confirmDeleteNote p1 {
+  font-size: 0.9em;
+  
+}
+#delNoteYes:hover {
+  background-color: #A32003 !important;
+}
+.editBtn {
+  cursor: pointer;
+  float: right;
+  border: 0px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  background-color: #fff;
+  color: #999;
+  font-size: 0.8em;
+  padding: 1px 15px;
+  margin-right: -2.2em;
+  display: none;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    /* Safari and Chrome, if Chrome rule needed */
+    .editBtn {
+       padding: 2px 15px;
+    }
+}
+.editBtn:hover {
+  color: #00478a;
+  border-color: #00478a;
+}
+.editingTA {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+.cancelEditBtn,
+.saveEditBtn {
+  display: none;
+  color: #777;
+  border-color: #777;
+}
+.saveEditBtn {
+  margin-right: 0.5em;
+}
+p5 {
+  float: right;
+  font-size: 0.7em;
+  color: #999;
+  margin-right: 2em;
+  margin-top: 0.2em;
+  font-family: sans-serif;
+}
+p6 {
+  float: right;
+  display: none;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  font-size: 0.8em;
+  color: #00478a;
+  margin-top: 0.2em;
+}
+/* Profile */
+#profile {
+  width: 95%;
+  max-width: 500px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 2em auto;
+  padding-top: 1.5em;
+}
+#prusern {
+  margin-top: 0.5em;
+}
+#prnotess {
+ margin-bottom: 0.5em; 
+}
+#profile button, 
+#profile input[type="button"] {
+  font-size: 0.8em;
+  height: 2.4em;
+  margin: 0em 0.7em 1.6em 0.7em;
+  width: 40%;
+  cursor: pointer;
+  background-color: #00478a;
+  border: 0px;
+  border-radius: 2px;
+  color: #fff;
+  box-shadow: 0px 1px 1px #bbb;
+}
+#profile form p1 {
+  text-align: left;
+}
+#profile img {
+  height: 70%;
+  margin: -1em 1em -0.5em -0.5em;
+}
+#delacc, 
+#deleteForm input[type='button'] {
+  margin-bottom: 2.5em !important;
+}
+#deleteForm input[type='button'] {
+  background-color: #A32003;
+}
+#delacc:hover {
+  background-color: #A32003 !important;
+}
+#deleteForm input[type='button']:hover {
+  background-color: #CF0A04;
+}
+#changePassForm, 
+#deleteForm {
+  display: none;
+}
+#changePassForm {
+  margin-top: -2em;
+}
+#deleteForm {
+  margin-top: -0.5em;
+}
+#closeChangePass, 
+#closeDeleteAcc {
+  font-size: 1.5em;
+  margin-right: 2em;
+  margin-top: 0em;
+  float: right;
+  cursor: pointer;
+  color: #444;
+}
+#closeChangePass:hover, 
+#closeDeleteAcc:hover {
+  color: #00478a;
+}
+#passchanged,
+#accdeleted {
+  width: 30%;
+  margin: 6em auto;
+  background-color: #fff;
+  padding: 3.5em 3em;
+  border-radius: 2px;
+  box-shadow: 0px 1px 2px #bbb;
+  display: none;
+}
+#psOKbtn,
+#adOKbtn {
+  font-size: 0.8em;
+  height: 2.2em;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  width: 50%;
+  cursor: pointer;
+  background-color: #00478a;
+  border: 0px;
+  border-radius: 2px;
+  color: #fff;
+  box-shadow: 0px 1px 1px #bbb;
+}
+#delNoteYes:hover {
+  background-color: #A32003;
+}
+#about {
+  //background-color: #fff;
+  cursor: pointer;
+  //float: right;
+  margin: 1.5em auto -2em auto;
+  font-size: 0.9em;
+  color: #00478a;
+  text-decoration: underline;
+}
+#about:hover {
+  color: #000;
 }

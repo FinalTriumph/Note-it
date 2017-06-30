@@ -42,9 +42,9 @@ if ( isset($_SESSION["user_id"]) ) {
   
   <div id="header">
     <img src="/images/noteit.png" id="header_logo">
-    <button onclick="showNewNote()" id="headernnbtn"><span id="nnplussign">+</span> New Note</button>
     <div id="hdright">
-      <button><?= $user["username"]; ?></button>
+      <button onclick="showNewNote()" id="headernnbtn">+ Add Note</button>
+      <a href="profile.php"><button><?= $user["username"]; ?></button></a>
       <a href="logout.php"><button>Logout</button></a>
     </div>
   </div>
@@ -64,12 +64,19 @@ if ( isset($_SESSION["user_id"]) ) {
       <button id="nnXbtn" onclick="hideNewNote()">x</button><br />
       <p1>New note:</p1>
       <textarea id="ta_nn"></textarea><br />
-      <p2 id="charNum">500 characters left</p2></br>
+      <p2 id="charNum">500 characters left</p2><br />
       <button id="add_note" onclick="addNote()">Add Note</button>
     </div>
   </div>
   
-  <script type="text/javascript" src="get_notes.js"></script>
+  <div id="popup2">
+    <div id="confirmDeleteNote">
+      <p1>Delete?</p1><br />
+      <button id="delNoteYes">Yes</button><button id="delNoteCancel">Cancel</button>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="js/get_notes.js"></script>
   
   <?php else: ?>
   
@@ -91,13 +98,30 @@ if ( isset($_SESSION["user_id"]) ) {
       <p2 id="passwordError"> </p2><br />
       <input type="button" value="Login" onclick="validateForm()">
     </form>
+    <div id="about">About</div>
 
+  </div>
+  
+  <div id="popup3">
+    <div id="aboutText">
+      <button id="closeAbout">x</button><br /><br />
+      <p1>This application was made as part of PHP/MySQL programming practice.</p1><br /><br />
+      <p1>It may be used as follows:</p1><br />
+      <p2>- User can register new account/login.</p2><br />
+      <p2>- Authenticated users can add up to 500 characters long notes.</p2><br />
+      <p2>- All notes are private and every user can see only their notes.</p2><br />
+      <p2>- Authenticated users can edit/remove their added notes.</p2><br />
+      <p2>- Authenticated users can also change their password or delete account permanently.</p2><br />
+      <br />
+      <p1>If any errors spotted, feel free to <a href="http://finaltriumph.tk/" target="_blank">contact me and let me know</a>.</p1><br /><br />
+      <p3>Made by <a href="http://finaltriumph.tk/" target="_blank"><img src="images/FinalTriumph.png" alt="FinalTriumph"></a></p3>
+    </div>
   </div>
   
   <?php endif; ?>
   
-<script type="text/javascript" src="validate_login_form.js"></script>
-<script type="text/javascript" src="logged_in.js"></script>
+<script type="text/javascript" src="js/validate_login_form.js"></script>
+<script type="text/javascript" src="js/logged_in.js"></script>
 
 
 </body>

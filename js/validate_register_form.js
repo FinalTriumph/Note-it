@@ -1,5 +1,13 @@
 /* global $ */
 
+$("#about").click(function() {
+  $("#popup3").slideDown(500);
+});
+
+$("#closeAbout").click(function() {
+  $("#popup3").slideUp(500);
+});
+
 function validateForm() {
 
   $("#usernameError").html(" ");
