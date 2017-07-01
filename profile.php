@@ -21,7 +21,6 @@ if ( isset($_SESSION["user_id"]) ) {
     $stmt = $conn->prepare("SELECT count(*) FROM notes WHERE username = :username");
     $stmt->bindParam(':username', $user["username"]);
     $stmt->execute();
-    //$count = $stmt->fetch(PDO::FETCH_ASSOC);
     $count = $stmt->fetch();
   
     $num = $count[0];
@@ -60,7 +59,6 @@ if ( isset($_SESSION["user_id"]) ) {
       <form id="changePassForm" onsubmit="return false;">
         <p4 id="closeChangePass">x</p4>
         <br />
-        <!--<p3>Change Password</p3><br />-->
         <p1>Old Password:</p1><br />
         <input type="password" name="oldPass" /><br />
         <p2 id="oldPassError"> </p2><br />
@@ -77,7 +75,6 @@ if ( isset($_SESSION["user_id"]) ) {
         
       <form id="deleteForm" onsubmit="return false;">
         <p4 id="closeDeleteAcc">x</p4><br />
-        <!--<p3>Delete Account</p3><br />-->
         <p1>Enter your password to permanently delete your account with all saved notes:</p1><br />
         <input type='password' name="deletePass" /><br />
         <p2 id="deletePassError"> </p2><br />

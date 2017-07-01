@@ -5,6 +5,7 @@ body {
   background-image: url("/images/bg1.jpg");
   background-size: 100% 100%;
   background-attachment: fixed;
+  min-width: 600px;
 }
 img {
   image-rendering: -webkit-optimize-contrast;
@@ -114,9 +115,9 @@ input[type="button"] {
 }
 @media screen and (max-width: 900px) {
     .home {
-        display: block;
-        width: 80%;
-        margin: 3% auto;
+      display: block;
+      width: 80%;
+      margin: 3% auto;
     }
     #loginregister {
       margin: 3% auto;
@@ -162,7 +163,7 @@ input[type="button"] {
   cursor: pointer;
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.9);
-  width: 30%;
+  width: 50%;
   margin: 0.5em auto;
   border-radius: 2px;
   padding: 2em 2em;
@@ -205,16 +206,18 @@ input[type="button"] {
   border-radius: 3px;
   margin: 7% auto;
   width: 95%;
-  max-width: 450px;
+  max-width: 500px;
   box-shadow: 0px 1px 2px #777;
 }
 #aboutText {
   padding-bottom: 1.5em;
   padding-left: 2em;
+  width: 90%;
   max-width: 600px;
   text-align: left;
 }
-#aboutText p1, #aboutText p2 {
+#aboutText p1, 
+#aboutText p2 {
   font-size: 0.9em;
   margin-right: 2em;
 }
@@ -226,9 +229,9 @@ input[type="button"] {
   margin-left: 30%;
 }
 #aboutText img {
-  height: 2em;
-  margin-top: 0.8em;
-  margin-bottom: -0.8em;
+  height: 1.8em;
+  margin-top: 0.7em;
+  margin-bottom: -0.7em;
 }
 #aboutText a {
   color: #000;
@@ -403,7 +406,7 @@ p6 {
   margin-top: 0.5em;
 }
 #prnotess {
- margin-bottom: 0.5em; 
+  margin-bottom: 0.5em; 
 }
 #profile button, 
 #profile input[type="button"] {
@@ -463,7 +466,8 @@ p6 {
 }
 #passchanged,
 #accdeleted {
-  width: 30%;
+  width: 95%;
+  max-width: 500px;
   margin: 6em auto;
   background-color: #fff;
   padding: 3.5em 3em;
@@ -489,11 +493,10 @@ p6 {
   background-color: #A32003;
 }
 #about {
-  //background-color: #fff;
   cursor: pointer;
-  //float: right;
   margin: 1.5em auto -2em auto;
   font-size: 0.9em;
+  font-family: sans-serif;
   color: #00478a;
   text-decoration: underline;
 }

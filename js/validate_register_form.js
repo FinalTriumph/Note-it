@@ -86,7 +86,6 @@ function validateForm() {
           alert("There was some technical error and new user coudn't be created");
         } else {
           window.location.reload();
-          //alert(data);
         }
       },
       error: function (data) {

@@ -51,9 +51,9 @@ if ( isset($_SESSION["user_id"]) ) {
       <button id="closeAbout">x</button><br /><br />
       <p1>This application was made as part of PHP/MySQL programming practice.</p1><br /><br />
       <p1>It may be used as follows:</p1><br />
-      <p2>- User can register new account/login.</p2><br />
+      <p2>- Users can register new account/login.</p2><br />
       <p2>- Authenticated users can add up to 500 characters long notes.</p2><br />
-      <p2>- All notes are private and every user can see only their notes.</p2><br />
+      <p2>- All notes are private and every user can see only his notes.</p2><br />
       <p2>- Authenticated users can edit/remove their added notes.</p2><br />
       <p2>- Authenticated users can also change their password or delete account permanently.</p2><br />
       <br />
