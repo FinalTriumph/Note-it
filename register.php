@@ -17,6 +17,7 @@ if ( isset($_SESSION["user_id"]) ) {
   <title>Register | Note It</title>
   <link rel="icon" href="/images/icon.png">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/spinner.css">
   <link href="https://fonts.googleapis.com/css?family=Sintony" rel="stylesheet">
 </head>
 
@@ -40,7 +41,14 @@ if ( isset($_SESSION["user_id"]) ) {
       <p1>Confirm Password:</p1><br />
       <input type=password name="confirmPassword" /><br />
       <p2 id="confirmPasswordError"> </p2><br />
-      <input type="button" value="Register" onclick="validateForm()">
+      <input type="button" value="Register" onclick="validateForm(this)">
+      <div class="spinner_v2">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
     </form>
     <div id="about">About</div>
 

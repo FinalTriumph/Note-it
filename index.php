@@ -99,7 +99,14 @@ if ( isset($_SESSION["user_id"]) ) {
       <p1>Password:</p1><br />
       <input type=password name="password" /><br />
       <p2 id="passwordError"> </p2><br />
-      <input type="button" value="Login" onclick="validateForm()">
+      <input type="button" value="Login" onclick="validateForm(this)" />
+      <div class="spinner_v2">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
     </form>
     <div id="about">About</div>
 

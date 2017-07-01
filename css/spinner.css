@@ -1,14 +1,21 @@
 /* Spinner from http://tobiasahlin.com/spinkit/ */
 
-.spinner {
+.spinner, 
+.spinner_v2 {
   margin: 2em auto;
   width: 6em;
   height: 4em;
   text-align: center;
   font-size: 1em;
 }
+.spinner_v2 {
+  display: none;
+  font-size: 0.7em;
+  margin: 0.5em auto 2.7em auto;
+}
 
-.spinner > div {
+.spinner > div, 
+.spinner_v2 > div {
   background-color: #00478a;
   height: 100%;
   width: 0.5em;
@@ -20,22 +27,30 @@
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
 }
 
-.spinner .rect2 {
+.spinner_v2 > div {
+  width: 0.4em;
+}
+
+.spinner .rect2,
+.spinner_v2 .rect2 {
   -webkit-animation-delay: -1.1s;
   animation-delay: -1.1s;
 }
 
-.spinner .rect3 {
+.spinner .rect3,
+.spinner_v2 .rect3 {
   -webkit-animation-delay: -1.0s;
   animation-delay: -1.0s;
 }
 
-.spinner .rect4 {
+.spinner .rect4,
+.spinner_v2 .rect4 {
   -webkit-animation-delay: -0.9s;
   animation-delay: -0.9s;
 }
 
-.spinner .rect5 {
+.spinner .rect5,
+.spinner_v2 .rect5{
   -webkit-animation-delay: -0.8s;
   animation-delay: -0.8s;
 }

@@ -8,7 +8,8 @@ $("#closeAbout").click(function() {
   $("#popup3").slideUp(500);
 });
 
-function validateForm() {
+function validateForm(btn) {
+  
   $("#usernameError").html(" ");
   $("#passwordError").html(" ");
   $("input[name=username]").css("border-color", "#000");
@@ -40,6 +41,10 @@ function validateForm() {
     }
 
   } else {
+    $(btn).hide();
+    $(".spinner_v2").show();
+    $("input").prop("disabled", true);
+    $("a").attr("disabled", true);
 
     $.ajax({
       type: 'POST',
@@ -48,18 +53,34 @@ function validateForm() {
       success: function (data) {
         if (data === "fail") {
           alert("Looks like we are having some technical difficulties. Couldn't connect to database.");
+          $(btn).show();
+          $(".spinner_v2").hide();
+          $("input").prop("disabled", false);
+          $("a").attr("disabled", false);
         } else if (data === "Username not registered"){
           $("#usernameError").html("Username not found");
           $("input[name=username]").css("border-color", "#A32003");
+          $(btn).show();
+          $(".spinner_v2").hide();
+          $("input").prop("disabled", false);
+          $("a").attr("disabled", false);
         } else if (data === "Incorrect password") {
           $("#passwordError").html("Incorrect password");
           $("input[name=password]").css("border-color", "#A32003");
+          $(btn).show();
+          $(".spinner_v2").hide();
+          $("input").prop("disabled", false);
+          $("a").attr("disabled", false);
         } else {
           window.location.reload();
         }
       },
       error: function (data) {
         alert("Error: " + data);
+        $(btn).show();
+        $(".spinner_v2").hide();
+        $("input").prop("disabled", false);
+        $("a").attr("disabled", false);
       }
     });
 
@@ -68,6 +89,7 @@ function validateForm() {
 
 $("input[name=username], input[name=password]").keypress(function(e) {
     if (e.which === 13) {
-        validateForm();
+        var $btn = $("input[value=Login]");
+        validateForm($btn);
     }
 });

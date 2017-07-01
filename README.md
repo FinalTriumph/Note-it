@@ -6,3 +6,5 @@ It may be used as follows:
 - All notes are private and every user can see only his notes.
 - Authenticated users can edit/remove their added notes.
 - Authenticated users can also change their password or delete account permanently.
+
+Application running at http://ft-noteit.tk .

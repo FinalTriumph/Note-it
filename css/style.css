@@ -22,6 +22,10 @@ p1:focus,
 a:focus {
   outline: none;
 }
+a[disabled] {
+   pointer-events: none;
+   cursor: default;
+}
 .home {
   display: inline-block;
   vertical-align: top;
