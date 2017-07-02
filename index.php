@@ -51,6 +51,8 @@ if ( isset($_SESSION["user_id"]) ) {
       <a href="logout.php"><button>Logout</button></a>
     </div>
   </div>
+  
+  <div id="header_overlay"></div>
     
   <div id="notes"></div>
   
@@ -68,7 +70,15 @@ if ( isset($_SESSION["user_id"]) ) {
       <p1>New note:</p1>
       <textarea id="ta_nn"></textarea><br />
       <p2 id="charNum">500 characters left</p2><br />
-      <button id="add_note" onclick="addNote()">Add Note</button>
+      <button id="add_note" onclick="addNote(this)">Add Note</button>
+      
+      <div class="spinner_v2">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
     </div>
   </div>
   
@@ -76,6 +86,14 @@ if ( isset($_SESSION["user_id"]) ) {
     <div id="confirmDeleteNote">
       <p1>Delete?</p1><br />
       <button id="delNoteYes">Yes</button><button id="delNoteCancel">Cancel</button>
+      
+      <div class="spinner_v2">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
     </div>
   </div>
   

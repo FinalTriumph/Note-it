@@ -8,7 +8,7 @@ $(document).ready(function() {
             success: function(data) {
                 if (data.length) {
                     for (var i = 0; i < data.length; i++) {
-                        $("#notes").prepend("<div class='note' id=" + data[i].id + "><button class='rmvnote' onclick='removeNote(" + data[i].id + ")'>x</button><p1>" + data[i].note + "</p1><br /><button class='editBtn editBtnSH' onclick='editNote("+ data[i].id +")'>EDIT</button><button class='editBtn cancelEditBtn'>CANCEL</button><button class='editBtn saveEditBtn' onclick='saveEditedNote("+ data[i].id +")'>SAVE</button><p5></p5><p6>Note saved!</p6></div>");
+                        $("#notes").prepend("<div class='note' id=" + data[i].id + "><button class='rmvnote' onclick='removeNote(" + data[i].id + ")'>x</button><p1>" + data[i].note + "</p1><br /><button class='editBtn editBtnSH' onclick='editNote("+ data[i].id +")'>EDIT</button><button class='editBtn cancelEditBtn'>CANCEL</button><button class='editBtn saveEditBtn' onclick='saveEditedNote("+ data[i].id +")'>SAVE</button><p5></p5><p6>Saving...</p6></div>");
                     }
                     $(".note").slideDown(500, function(){
                         $(".editBtnSH").show(300);
@@ -24,11 +24,11 @@ $(document).ready(function() {
                         $("#plusSign").css("box-shadow", "0px 1px 2px #999");
                     });
                 }
-                $(".spinner").slideUp(200);
+                $(".spinner, #header_overlay").slideUp(200);
             },
             error: function(data) {
                 alert("Error: " + data);
-                $(".spinner").hide();
+                $(".spinner, #header_overlay").slideUp(200);
             }
         });
     });

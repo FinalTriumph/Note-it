@@ -4,14 +4,28 @@
 .spinner_v2 {
   margin: 2em auto;
   width: 6em;
-  height: 4em;
+  height: 5em;
   text-align: center;
   font-size: 1em;
 }
 .spinner_v2 {
   display: none;
+  height: 4em;
   font-size: 0.7em;
   margin: 0.5em auto 2.7em auto;
+}
+#changePassForm .spinner_v2 {
+  margin: -0.5em auto 2.5em auto;
+}
+#deleteForm .spinner_v2 {
+  margin-top: -0.5em;
+  padding-bottom: 2.1em;
+}
+#new_note .spinner_v2 {
+  margin-top: 0.6em;
+}
+#confirmDeleteNote .spinner_v2 {
+  margin: 1.4em auto 0em auto;
 }
 
 .spinner > div, 

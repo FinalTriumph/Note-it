@@ -38,7 +38,7 @@ $("#closeDeleteAcc").click(function() {
     $("form p2").html(" ");
 });
 
-function changePassword() {
+function changePassword(btn) {
     
     $("#oldPassError").html(" ");
     $("#newPassError").html(" ");
@@ -97,6 +97,10 @@ function changePassword() {
           $("input[name=confirmNewPass]").css("border-color", "#A32003");
       
       } else {
+          $(".spinner_v2").show();
+          $(btn).hide();
+          $("input, a, #delacc, #closeChangePass").attr("disabled", true);
+          
           $.ajax({
               type: 'POST',
               url: 'change_password.php',
@@ -107,15 +111,33 @@ function changePassword() {
                       $("#changePassForm").slideUp(500);
                       $("#changePassBtn").slideDown(500);
                       $("input[type='password']").val("");
+                      
+                      $(".spinner_v2").hide();
+                      $(btn).show();
+                      $("input, #delacc").prop("disabled", false);
+                      $("a, #delacc, #closeChangePass").attr("disabled", false);
                   } else if (data === "Incorrect password") {
                       $("#oldPassError").html("Incorrect password");
                       $("input[name=oldPass]").css("border-color", "#A32003");
                       $("input[name=confirmNewPass]").val("");
+                      
+                      $(".spinner_v2").hide();
+                      $(btn).show();
+                      $("input, #delacc").prop("disabled", false);
+                      $("a, #delacc, #closeChangePass").attr("disabled", false);
                   } else {
+                      $(".spinner_v2").hide();
+                      $(btn).show();
+                      $("input, #delacc").prop("disabled", false);
+                      $("a, #delacc, #closeChangePass").attr("disabled", false);
                       alert(data);
                   }
               },
               error: function (data) {
+                  $(".spinner_v2").hide();
+                  $(btn).show();
+                  $("input, #delacc").prop("disabled", false);
+                  $("a, #delacc, #closeChangePass").attr("disabled", false);
                   alert("Error: " + data);
               }
             });
@@ -123,7 +145,7 @@ function changePassword() {
       }
 }
 
-function deleteAccount() {
+function deleteAccount(btn) {
     
     $("#deletePassError").html(" ");
     $("input[name=deletePass]").css("border-color", "#000");
@@ -143,6 +165,10 @@ function deleteAccount() {
         } 
         
     } else {
+        $(".spinner_v2").show();
+        $(btn).hide();
+        $("input, a, #changePassBtn, #closeDeleteAcc").attr("disabled", true);
+        
         $.ajax({
             type: 'POST',
             url: 'delete_profile.php',
@@ -153,14 +179,25 @@ function deleteAccount() {
                     $("#deleteForm").slideUp(500);
                     $("#delacc").slideDown(500);
                     $("input[type='password']").val("");
+                    
                 } else if (data === "Incorrect password") {
                     $("#deletePassError").html("Incorrect password");
                     $("input[name=deletePass]").css("border-color", "#A32003");
+                    
+                    $(".spinner_v2").hide();
+                    $(btn).show();
+                    $("input, a, #changePassBtn, #closeDeleteAcc").attr("disabled", false);
                 } else {
+                    $(".spinner_v2").hide();
+                    $(btn).show();
+                    $("input, a, #changePassBtn, #closeDeleteAcc").attr("disabled", false);
                     alert(data);
                 }
             },
             error: function (data) {
+                $(".spinner_v2").hide();
+                $(btn).show();
+                $("input, a, #changePassBtn, #closeDeleteAcc").attr("disabled", false);
                 alert("Error: " + data);
             }
         });
@@ -176,12 +213,14 @@ function profDeletedOk() {
 
 $("input[name=oldPass], input[name=newPass], input[name=confirmNewPass]").keypress(function(e) {
     if (e.which === 13) {
-        changePassword();
+        var $btn = $("input[value=Submit]");
+        changePassword($btn);
     }
 });
 
 $("input[name=deletePass]").keypress(function(e) {
     if (e.which === 13) {
-        deleteAccount();
+        var $btn = $("input[value='DELETE Account']");
+        deleteAccount($btn);
     }
 });

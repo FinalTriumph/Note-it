@@ -28,11 +28,12 @@ $("#ta_nn").keyup(function () {
 $("#ta_nn").keypress(function(e) {
     if (e.which === 13) {
         e.preventDefault();
-        addNote();
+        var $btn = $("#add_note");
+        addNote($btn);
     }
 });
 
-function addNote() {
+function addNote(btn) {
     
     var val = $("#ta_nn").val();
     
@@ -45,6 +46,10 @@ function addNote() {
         $("#ta_nn").val("");
         $("#charNum").html("500 characters left");
     } else {
+        $(".spinner_v2").show();
+        $(btn).hide();
+        $("textarea, #nnXbtn").attr("disabled", true);
+        
         $.ajax({
             type: "POST",
             url: "save_note.php",
@@ -58,15 +63,24 @@ function addNote() {
                             $("#addFirstNote").remove();
                         })
                     }
-                    $("#notes").prepend("<div class='note' id=" + id + "><button class='rmvnote' onclick='removeNote(" + id + ")'>x</button><p1>" + val + "</p1><br /><button class='editBtn editBtnSH' onclick='editNote("+ id +")'>EDIT</button><button class='editBtn cancelEditBtn'>CANCEL</button><button class='editBtn saveEditBtn' onclick='saveEditedNote("+ id +")'>SAVE</button><p5></p5><p6>Note saved!</p6></div>");
+                    $("#notes").prepend("<div class='note' id=" + id + "><button class='rmvnote' onclick='removeNote(" + id + ")'>x</button><p1>" + val + "</p1><br /><button class='editBtn editBtnSH' onclick='editNote("+ id +")'>EDIT</button><button class='editBtn cancelEditBtn'>CANCEL</button><button class='editBtn saveEditBtn' onclick='saveEditedNote("+ id +")'>SAVE</button><p5></p5><p6>Saving...</p6></div>");
                     $(".note").slideDown(500, function() {
                         $("#" + id + " .editBtnSH").show(300);
                     });
+                    $(".spinner_v2").hide();
+                    $(btn).show();
+                    $("textarea, #nnXbtn").attr("disabled", false);
                 } else {
+                    $(".spinner_v2").hide();
+                    $(btn).show();
+                    $("textarea, #nnXbtn").attr("disabled", false);
                     alert(data);
                 }
             },
             error: function(data) {
+                $(".spinner_v2").hide();
+                $(btn).show();
+                $("textarea, #nnXbtn").attr("disabled", false);
                 alert("Error: " + data);
             }
         });
@@ -78,13 +92,19 @@ function removeNote(id) {
     $("#confirmDeleteNote p1").html('Delete note "' +note +'"?');
     $("#popup2").slideDown(500);
     $("#delNoteYes").click(function() {
+        $(".spinner_v2").show();
+        $("#confirmDeleteNote button").hide();
         $.ajax({
             type: "POST",
             url: "remove_note.php",
             data: { id: id },
             success: function(data) {
                 if (data === "Success") {
-                    $("#popup2").slideUp(500);
+                    $("#popup2").slideUp(500, function() {
+                        $(".spinner_v2").hide();
+                        $("#confirmDeleteNote button").show();
+                    });
+                    
                     $("#" + id + " .editBtn, #" + + id + " p5").remove();
                     $("#" + id).slideUp(500, function() { 
                         $("#" + id).remove();
@@ -102,10 +122,14 @@ function removeNote(id) {
                         }
                     });
                 } else {
+                    $(".spinner_v2").hide();
+                    $("#confirmDeleteNote button").show();
                     alert(data);
                 }
             },
             error: function(data) {
+                $(".spinner_v2").hide();
+                $("#confirmDeleteNote button").show();
                 alert("Error: " + data);
             }
         });
@@ -167,21 +191,24 @@ function saveEditedNote(id) {
         nVal = "Empty note";
     }
     
+    $("#" + id + " p1").attr("contentEditable", false);
+    $("#" + id + " p1").css("color", "#000");
+    $("#" + id + " .saveEditBtn, #" + id + " .cancelEditBtn, #" + id + " p5").hide(300);
+    $("#" + id + " p6").show(300);
+    
     $.ajax({
             type: "POST",
             url: "update_note.php",
             data: { id: id, note: nVal },
             success: function(data) {
                 if (data === "Success") {
-                    $("#" + id + " p1").attr("contentEditable", false);
-                    $("#" + id + " p1").css("color", "#000");
                     $("#" + id + " .editBtnSH").show(300);
-                    $("#" + id + " .saveEditBtn, #" + id + " .cancelEditBtn, #" + id + " p5").hide(300);
-                    $("#" + id + " p6").show(300, function() {
-                        setTimeout(function(){
-                            $("#" + id + " p6").hide(500);
+                    $("#" + id + " p6").html("Note Saved!");
+                    setTimeout(function(){
+                            $("#" + id + " p6").hide(500, function() {
+                                $("#" + id + " p6").html("Saving...");
+                            });
                         }, 1500);
-                    });
                 } else {
                     alert(data);
                 }

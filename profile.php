@@ -68,7 +68,14 @@ if ( isset($_SESSION["user_id"]) ) {
         <p1>Confirm New Password:</p1><br />
         <input type=password name="confirmNewPass" /><br />
         <p2 id="confirmPassError"> </p2><br />
-        <input type="button" value="Submit" onclick="changePassword()" />
+        <input type="button" value="Submit" onclick="changePassword(this)" />
+        <div class="spinner_v2">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
       </form>
         
       <button id="delacc" onclick="deleteAcc()">Delete Account</button>
@@ -78,7 +85,14 @@ if ( isset($_SESSION["user_id"]) ) {
         <p1>Enter your password to permanently delete your account with all saved notes:</p1><br />
         <input type='password' name="deletePass" /><br />
         <p2 id="deletePassError"> </p2><br />
-        <input type="button" value="DELETE Account" onclick="deleteAccount()" />
+        <input type="button" value="DELETE Account" onclick="deleteAccount(this)" />
+        <div class="spinner_v2">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
       </form>
     
     </div>
