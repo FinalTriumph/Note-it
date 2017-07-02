@@ -5,11 +5,18 @@ function showNewNote() {
     $("#ta_nn").focus();
 }
 
-function hideNewNote() {
-    $("#popup").slideUp(500);
-    $("#ta_nn").val("");
-    $("#ta_nn").attr("placeholder", "");
-    $("#charNum").html("500 characters left");
+function hideNewNote(btn) {
+    $("#popup").slideUp(500, function() {
+        $("#ta_nn").val("");
+        $("#ta_nn").attr("placeholder", "");
+        $("#charNum").html("500 characters left");
+        
+        if (btn) {
+            $(".spinner_v2").hide();
+            $(btn).show();
+            $("textarea, #nnXbtn").attr("disabled", false);
+        }
+    });
 }
 
 $("#ta_nn").keyup(function () {
@@ -57,7 +64,7 @@ function addNote(btn) {
             success: function(data) {
                 if (data.substr(0, 7) === "Success") {
                     var id = data.substr(8);
-                    hideNewNote();
+                    hideNewNote(btn);
                     if ($("#addFirstNote")) {
                         $("#addFirstNote").slideUp(500, function() {
                             $("#addFirstNote").remove();
@@ -67,9 +74,7 @@ function addNote(btn) {
                     $(".note").slideDown(500, function() {
                         $("#" + id + " .editBtnSH").show(300);
                     });
-                    $(".spinner_v2").hide();
-                    $(btn).show();
-                    $("textarea, #nnXbtn").attr("disabled", false);
+                    
                 } else {
                     $(".spinner_v2").hide();
                     $(btn).show();
