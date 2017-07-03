@@ -30,6 +30,10 @@ button[disabled],
    pointer-events: none;
    cursor: default;
 }
+textarea[disabled] {
+  color: #777;
+  background-color: #fff;
+}
 .home {
   display: inline-block;
   vertical-align: top;
