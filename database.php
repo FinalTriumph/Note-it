@@ -9,7 +9,7 @@ $database = "note_it";
 try {
   $conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
 } catch(PDOException $e) {
-  die("fail");
+  die("Error: Failed to connect to database");
 }
 
 ?>
