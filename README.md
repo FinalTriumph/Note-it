@@ -7,4 +7,4 @@ It may be used as follows:
 - Authenticated users can edit/remove their added notes.
 - Authenticated users can also change their password or delete account permanently.
 
-Application running at https://ft-noteit.herokuapp.com/ .
+Live app running on Heroku - https://ft-noteit.herokuapp.com/ .
