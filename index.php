@@ -137,8 +137,8 @@ if ( isset($_SESSION["user_id"]) ) {
       <p1>It may be used as follows:</p1><br />
       <p2>- Users can register new account/login.</p2><br />
       <p2>- Authenticated users can add up to 500 characters long notes.</p2><br />
-      <p2>- All notes are private and every user can see only his notes.</p2><br />
-      <p2>- Authenticated users can edit/remove their added notes.</p2><br />
+      <p2>- All notes are private and users can see only notes they've added.</p2><br />
+      <p2>- Authenticated users can edit/remove notes they've added.</p2><br />
       <p2>- Authenticated users can also change their password or delete account permanently.</p2><br />
       <br />
       <p1>If any errors spotted, feel free to <a href="http://finaltriumph.tk/" target="_blank">contact me and let me know</a>.</p1><br /><br />
