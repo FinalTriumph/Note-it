@@ -141,8 +141,8 @@ if ( isset($_SESSION["user_id"]) ) {
       <p2>- Authenticated users can edit/remove notes they've added.</p2><br />
       <p2>- Authenticated users can also change their password or delete account permanently.</p2><br />
       <br />
-      <p1>If any errors spotted, feel free to <a href="http://finaltriumph.tk/" target="_blank">contact me and let me know</a>.</p1><br /><br />
-      <p3>Made by <a href="http://finaltriumph.tk/" target="_blank"><img src="images/FinalTriumph.png" alt="FinalTriumph"></a></p3>
+      <p1>If any errors spotted, feel free to <a href="http://finaltriumph.eu/contact" target="_blank">contact me and let me know</a>.</p1><br /><br />
+      <p3>Made by <a href="http://finaltriumph.eu/" target="_blank">FinalTriumph</a></p3>
     </div>
   </div>
   
